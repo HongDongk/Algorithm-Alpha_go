@@ -1,3 +1,5 @@
+// dp 테이블 생성필요
+
 function solution(arr){  
     let dp = new Array(arr.length).fill(0);
     dp[0] = 1;
