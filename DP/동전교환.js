@@ -1,3 +1,5 @@
+// dp 테이블 생성필요(보통 초기값은 설정해주는경우가 많은듯..?)
+
 function solution(m, coin){  
     let dp = new Array(m+1).fill(1000);
     dp[0] = 0;
