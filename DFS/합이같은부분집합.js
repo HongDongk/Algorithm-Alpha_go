@@ -1,3 +1,5 @@
+// 트리 그려서 풀기!
+
 function solution(arr){
     let answer="NO", flag=0;
     let total=arr.reduce((a, b)=>a+b, 0);
