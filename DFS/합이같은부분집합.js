@@ -1,4 +1,4 @@
-// 트리 그려서 풀기!
+// 이진트리 그려서 풀기!
 
 function solution(arr){
     let answer="NO", flag=0;
