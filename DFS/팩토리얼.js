@@ -1,3 +1,5 @@
+// 전값 계속불러오는 형태의 재귀방식
+
 function solution(n){         
 
     function DFS(L){
