@@ -1,4 +1,4 @@
-// 순열구하기 check배열 사용(외운다.)
+// 순열구하기 중복 되는지 check하는 배열 사용(외운다.)
 
 function solution(m, arr){         
     let answer=[];
