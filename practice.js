@@ -1,8 +1,12 @@
-let arrA = [1, 2, 3];
-let arrB = arrA.slice();
+let answer = '';
 
-arrB[0] = 10;
+function DFS(n, k){
+    if(n > k){
+        console.log(answer);
+    }else{
+        answer += n + ' ';
+        DFS(n+1, k);
+    }
+}
 
-console.log(arrA);
-// [1, 2, 3]
-console.log(arrB);
+DFS(1, 3);

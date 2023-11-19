@@ -1,5 +1,5 @@
 // dfs는 트리를 그릴줄 알아야 한다!!(중요)
-// 이진트리
+// 이진트리 - DFS안에서 DFS 두번 실행!!
 
 function solution(n){
     let answer=[];
