@@ -1,4 +1,5 @@
 // 순열과 조합의 곱
+// 주의!!! - 파스칼 삼각형은 조합의 수와 순열을 사용하는 규칙이 있다!!(걍 구현은 절대안됌)
 
 function solution(n, f){     
 
@@ -15,7 +16,7 @@ function solution(n, f){
         else return dy[n][r]=combi(n-1, r-1)+combi(n-1, r);
     }
 
-    // 3C0, 3C1, 3C2, 3C3 구하기해서 b에저장
+    // 3C0, 3C1, 3C2, 3C3 구하기해서 저장
     for(let i=0; i<n; i++){
         combination[i]=combi(n-1, i);           
     }
