@@ -1,12 +1,12 @@
 function solution(n, arr){  
     let answer=0;
     let graph = new Array(n+1).fill(0).map((a) => new Array(n+1).fill(0));
-    let ch = new Array(n+1).fill(0);
-    path=[];
+    let ch = new Array(n+1).fill(0);  // 각 정점마다 방문여부 체크
+    ch[1]=1;  // 1번 정점은 무조건 체그되어있어야함!
+    path=[1];
 
     for(let [a, b] of arr){
-        graph[a][b]=1;   // 방향 그래프
-        // graph[b][a]=1;   무방향 그래프일때!!
+        graph[a][b]=1; 
     }
 
     function DFS(v){
@@ -27,8 +27,6 @@ function solution(n, arr){
         }
     }
 
-    path.push(1);
-    ch[1]=1;  // 1번 정점은 무조건 체그되어있어야함!
     DFS(1);
     return answer;
 }
