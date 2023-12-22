@@ -1,3 +1,5 @@
+// 상태트리(BFS) - 최단거리
+
 function solution(){  
     let answer="";
     let queue=[];
