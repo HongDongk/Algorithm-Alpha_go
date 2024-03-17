@@ -1,6 +1,3 @@
-// DFS로는 풀엇음 - 근데 입력값(동전종류갯수,거슬러줄 금액)이 클경우 DP사용해야함
-// DP적 사고 필요함
-
 function solution(m, coin) {
   let dp = new Array(m + 1).fill(1000);
   dp[0] = 0;

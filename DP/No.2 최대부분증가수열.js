@@ -1,7 +1,5 @@
-// dp 테이블 생성필요 + 문제이해
-
 function solution(arr) {
-  let dp = new Array(arr.length).fill(0);
+  let dp = [];
   dp[0] = 1;
   for (let i = 1; i < arr.length; i++) {
     let max = 0;
@@ -16,5 +14,5 @@ function solution(arr) {
   return Math.max(...dp);
 }
 
-let arr = [5, 3, 7, 8, 6, 2, 9, 4];
+let arr = [2, 7, 5, 8, 6, 4, 7, 12, 3];
 console.log(solution(arr));

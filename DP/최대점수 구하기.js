@@ -1,5 +1,4 @@
-// dp 테이블을 어떻게 생성할지가 중요함
-// 최대부분증가수열과 다르게 중복안되므로 거꾸로 for문돌려야됌
+// 조건 => 문제는 중복불가!
 
 function solution(m, arr) {
   let dp = new Array(m + 1).fill(0);
