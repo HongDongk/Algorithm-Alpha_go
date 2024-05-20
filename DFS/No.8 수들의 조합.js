@@ -1,5 +1,3 @@
-// ✅ 조합은 DFS의 인자가 2개이다!
-
 function solution(n, k, arr, m) {
   let answer = 0;
   function DFS(L, s, sum) {

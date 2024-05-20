@@ -1,41 +1,35 @@
-function solution(n, f) {
-  let dp = new Array(15).fill(0).map((a) => new Array(15).fill(0));
-  let combination = [];
-  let check = new Array(n).fill(false);
-  let temp = new Array(n).fill(0);
+function solution(n, k, arr, m) {
   let answer = [];
-  let flag = false;
-
-  function combi(n, r) {
-    if (dp[n][r] > 0) return dp[n][r];
-    if (n === r || r === 0) return 1;
-    else return (dp[n][r] = combi(n - 1, r - 1) + combi(n - 1, r));
-  }
-
-  for (let i = 0; i < n; i++) {
-    combination.push(combi(n - 1, i));
-  }
-
-  function DFS(L, sum) {
-    if (flag) return;
-    if (L === n && sum === f) {
-      answer = temp.slice();
-      flag = true;
+  function DFS(L, num, summ) {
+    if (L === k && summ % m === 0) {
+      answer.push(summ);
+      return;
     } else {
-      for (let i = 1; i <= n; i++) {
-        if (!check[i]) {
-          check[i] = true;
-          temp[L] = i;
-          DFS(L + 1, sum + combination[L] * i);
-          check[i] = false;
-        }
+      for (let i = num; i < n; i++) {
+        DFS(L + 1, i + 1, summ + arr[i]);
       }
     }
   }
 
-  DFS(0, 0);
+  DFS(0, 0, 0);
+
+  // let temp = new Array(k).fill(0);
+
+  // function DFS(L, num) {
+  //   if (L === k) {
+  //     console.log(temp);
+  //   } else {
+  //     for (let i = num; i < n; i++) {
+  //       temp[L] = arr[i];
+  //       DFS(L + 1, i + 1);
+  //     }
+  //   }
+  // }
+
+  // DFS(0, 0);
 
   return answer;
 }
 
-console.log(solution(4, 16));
+let arr = [2, 4, 5, 8, 12];
+console.log(solution(5, 3, arr, 6));
