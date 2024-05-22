@@ -1,35 +1,41 @@
-function solution(n, k, arr, m) {
-  let answer = [];
-  function DFS(L, num, summ) {
-    if (L === k && summ % m === 0) {
-      answer.push(summ);
-      return;
+function solution(n, arr) {
+  let list = new Array(n + 1).fill(0).map((a) => new Array());
+  let ch = new Array(n + 1).fill(false);
+  ch[1] = true;
+  let answer = 0;
+
+  for (let [a, b] of arr) {
+    list[a].push(b);
+  }
+
+  function DFS(L) {
+    if (L === n) {
+      answer++;
     } else {
-      for (let i = num; i < n; i++) {
-        DFS(L + 1, i + 1, summ + arr[i]);
+      for (let i = 0; i < list[L].length; i++) {
+        if (!ch[list[L][i]]) {
+          ch[list[L][i]] = true;
+          DFS(list[L][i]);
+          ch[list[L][i]] = false;
+        }
       }
     }
   }
 
-  DFS(0, 0, 0);
-
-  // let temp = new Array(k).fill(0);
-
-  // function DFS(L, num) {
-  //   if (L === k) {
-  //     console.log(temp);
-  //   } else {
-  //     for (let i = num; i < n; i++) {
-  //       temp[L] = arr[i];
-  //       DFS(L + 1, i + 1);
-  //     }
-  //   }
-  // }
-
-  // DFS(0, 0);
+  DFS(1);
 
   return answer;
 }
 
-let arr = [2, 4, 5, 8, 12];
-console.log(solution(5, 3, arr, 6));
+let arr = [
+  [1, 2],
+  [1, 3],
+  [1, 4],
+  [2, 1],
+  [2, 3],
+  [2, 5],
+  [3, 4],
+  [4, 2],
+  [4, 5],
+];
+console.log(solution(5, arr));

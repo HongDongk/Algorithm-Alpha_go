@@ -1,14 +1,14 @@
-// DFS => 마찬가지로 트리
+// 체크배열 활용
 
 function solution(n, arr) {
   let answer = 0;
   let graph = new Array(n + 1).fill(0).map((a) => new Array(n + 1).fill(0));
-  let ch = new Array(n + 1).fill(0); // 각 정점마다 방문여부 체크
-  ch[1] = 1; // 1번 정점은 무조건 체크되어있어야함!
+  let ch = new Array(n + 1).fill(false);
+  ch[1] = true; // 1번 정점은 무조건 체크(주의!)
   path = [1];
 
   for (let [a, b] of arr) {
-    graph[a][b] = 1; // 방향 그래프 설정
+    graph[a][b] = 1;
   }
 
   function DFS(v) {
@@ -17,11 +17,11 @@ function solution(n, arr) {
       console.log(path);
     } else {
       for (let i = 1; i <= n; i++) {
-        if (graph[v][i] === 1 && ch[i] === 0) {
-          ch[i] = 1;
+        if (graph[v][i] === 1 && !ch[i]) {
+          ch[i] = true;
           path.push(i);
           DFS(i);
-          ch[i] = 0;
+          ch[i] = false;
           path.pop();
         }
       }
