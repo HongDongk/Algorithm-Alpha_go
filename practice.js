@@ -1,41 +1,25 @@
-function solution(n, arr) {
-  let list = new Array(n + 1).fill(0).map((a) => new Array());
-  let ch = new Array(n + 1).fill(false);
-  ch[1] = true;
+function solution(s, e) {
   let answer = 0;
+  let queue = [s];
+  let check = new Array(10001).fill(false);
+  check[s] = true;
 
-  for (let [a, b] of arr) {
-    list[a].push(b);
-  }
-
-  function DFS(L) {
-    if (L === n) {
-      answer++;
-    } else {
-      for (let i = 0; i < list[L].length; i++) {
-        if (!ch[list[L][i]]) {
-          ch[list[L][i]] = true;
-          DFS(list[L][i]);
-          ch[list[L][i]] = false;
+  while (queue.length) {
+    let len = queue.length;
+    for (let i = 0; i < len; i++) {
+      let x = queue.shift();
+      for (let nx of [x + 1, x - 1, x + 5]) {
+        if (nx === e) return answer + 1;
+        if (nx > 0 && nx <= 10000 && !check[nx]) {
+          check[nx] = true;
+          queue.push(nx);
         }
       }
     }
+    answer++;
   }
-
-  DFS(1);
 
   return answer;
 }
 
-let arr = [
-  [1, 2],
-  [1, 3],
-  [1, 4],
-  [2, 1],
-  [2, 3],
-  [2, 5],
-  [3, 4],
-  [4, 2],
-  [4, 5],
-];
-console.log(solution(5, arr));
+console.log(solution(5, 14));

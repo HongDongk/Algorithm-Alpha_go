@@ -5,7 +5,7 @@ function solution(s, e) {
   let L = 0;
 
   while (queue.length) {
-    let len = queue.length; // 주의! queue값이 계속 업데이트되므로 따로 빼줄필요성 잇음
+    let len = queue.length; // 주의(queue길이가 계속 변함)
     for (let i = 0; i < len; i++) {
       let x = queue.shift();
       for (let nx of [x - 1, x + 1, x + 5]) {
