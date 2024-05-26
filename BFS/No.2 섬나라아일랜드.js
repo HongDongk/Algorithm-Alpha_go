@@ -1,3 +1,7 @@
+// 송아지 찾기문제와 다르게
+// 보드에 기록하면 되므로
+// while 밑에 queue.length만큼 반복문을 돌 필요 없다!!
+
 function solution(board) {
   let answer = 0;
   let dx = [-1, -1, 0, 1, 1, 1, 0, -1];

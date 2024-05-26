@@ -1,25 +1,46 @@
-function solution(s, e) {
+function solution(board) {
   let answer = 0;
-  let queue = [s];
-  let check = new Array(10001).fill(false);
-  check[s] = true;
+  let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
+  let dy = [0, 1, 1, 1, 0, -1, -1, -1];
+  let queue = [];
 
-  while (queue.length) {
-    let len = queue.length;
-    for (let i = 0; i < len; i++) {
-      let x = queue.shift();
-      for (let nx of [x + 1, x - 1, x + 5]) {
-        if (nx === e) return answer + 1;
-        if (nx > 0 && nx <= 10000 && !check[nx]) {
-          check[nx] = true;
-          queue.push(nx);
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board.length; j++) {
+      if (board[i][j] === 1) {
+        board[i][j] = 0;
+        answer++;
+        queue.push([i, j]);
+        while (queue.length) {
+          let len = queue.length;
+          for (let i = 0; i < len; i++) {
+            let [cx, cy] = queue.shift();
+            console.log(cx, cy);
+            for (let j = 0; j < 8; j++) {
+              let nx = cx + dx[j];
+              let ny = cy + dy[j];
+              if (nx >= 0 && ny >= 0 && nx < board.length && ny < board.length && board[nx][ny] === 1) {
+                board[nx][ny] = 0;
+                queue.push([nx, ny]);
+              }
+            }
+          }
         }
+        console.log('BFS End');
       }
     }
-    answer++;
   }
 
   return answer;
 }
 
-console.log(solution(5, 14));
+let arr = [
+  [1, 1, 0, 0, 0, 1, 0],
+  [0, 1, 1, 0, 1, 1, 0],
+  [0, 1, 0, 0, 0, 0, 0],
+  [0, 0, 0, 1, 0, 1, 1],
+  [1, 1, 0, 1, 1, 0, 0],
+  [1, 0, 0, 0, 1, 0, 0],
+  [1, 0, 1, 0, 1, 0, 0],
+];
+
+console.log(solution(arr));
