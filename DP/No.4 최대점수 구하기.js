@@ -1,4 +1,4 @@
-// 조건 => 문제는 중복불가!
+// 중복처리는 뒤에서부터 for문
 
 function solution(m, arr) {
   let dp = new Array(m + 1).fill(0);
