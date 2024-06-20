@@ -8,8 +8,12 @@ function solution(target, arr) {
     if (arr[mid] === target) {
       answer = mid + 1;
       break;
-    } else if (arr[mid] > target) rt = mid - 1;
-    else lt = mid + 1;
+    }
+    if (arr[mid] > target) {
+      rt = mid - 1;
+    } else {
+      lt = mid + 1;
+    }
   }
 
   return answer;

@@ -1,10 +1,3 @@
-function solution(m, arr) {}
+console.log(Number(5 / 2));
 
-let arr = [
-  [10, 5],
-  [25, 12],
-  [15, 8],
-  [6, 3],
-  [7, 4],
-];
-console.log(solution(20, arr));
+let arr = [23, 87, 65, 12, 57, 32, 99, 81];
