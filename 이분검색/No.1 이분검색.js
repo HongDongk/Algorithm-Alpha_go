@@ -1,18 +1,18 @@
 function solution(target, arr) {
   let answer;
   arr.sort((a, b) => a - b);
-  let lt = 0;
-  let rt = arr.length - 1;
-  while (lt <= rt) {
-    let mid = parseInt((lt + rt) / 2);
+  let start = 0;
+  let last = arr.length - 1;
+  while (start <= last) {
+    let mid = parseInt((start + last) / 2);
     if (arr[mid] === target) {
       answer = mid + 1;
       break;
     }
     if (arr[mid] > target) {
-      rt = mid - 1;
+      last = mid - 1;
     } else {
-      lt = mid + 1;
+      start = mid + 1;
     }
   }
 
