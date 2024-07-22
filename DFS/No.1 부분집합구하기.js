@@ -1,29 +1,23 @@
-// check배열 활용
-
 function solution(n) {
-  let answer = [];
-  let ch = new Array(n + 1).fill(0);
+  let check = new Array(n + 1).fill(false);
 
   function DFS(L) {
-    // 마지막 숫자일경우
     if (L === n + 1) {
-      let tmp = '';
+      let temp = '';
       for (let i = 1; i <= n; i++) {
-        if (ch[i] === 1) tmp += i + ' ';
+        if (check[i]) temp += i + ' ';
       }
-      if (tmp.length > 0) answer.push(tmp.trim()); // 공집합 제외, trim() : 문자열 시작,끝의 여백제거
-    }
-    // 마지막 숫자가 아닐경우
-    else {
-      ch[L] = 1;
+      if (temp.length > 0) console.log(temp.trim()); // 공집합 제외, trim() : 문자열 시작,끝의 여백제거
+    } else {
+      check[L] = true;
       DFS(L + 1);
-      ch[L] = 0;
+      check[L] = false;
       DFS(L + 1);
     }
   }
 
   DFS(1);
-  return answer;
+  return 'yes';
 }
 
 console.log(solution(3));
