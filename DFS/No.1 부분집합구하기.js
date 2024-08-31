@@ -17,7 +17,7 @@ function solution(n) {
   }
 
   DFS(1);
-  return 'yes';
+  return '정답!';
 }
 
 console.log(solution(3));

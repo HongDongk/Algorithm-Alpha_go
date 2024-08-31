@@ -2,7 +2,7 @@
 
 function solution(m, arr) {
   let answer = [];
-  let ch = new Array(arr.length).fill(0);
+  let ch = new Array(arr.length).fill(false);
   let temp = new Array(m).fill(0);
 
   function DFS(L) {
@@ -10,11 +10,11 @@ function solution(m, arr) {
       answer.push(temp.slice());
     } else {
       for (let i = 0; i < arr.length; i++) {
-        if (ch[i] === 0) {
-          ch[i] = 1;
+        if (!ch[i]) {
+          ch[i] = true;
           temp[L] = arr[i];
           DFS(L + 1);
-          ch[i] = 0;
+          ch[i] = false;
         }
       }
     }
