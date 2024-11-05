@@ -1,18 +1,24 @@
-function solution(n, m) {
-  let temp = new Array(m).fill(0);
+function solution(s, e) {
+  let ch = new Array(10001).fill(false);
+  ch[s] = true;
+  let queue = [s];
+  let L = 0;
 
-  function DFS(L, s) {
-    if (L === m) {
-      console.log(temp);
-    } else {
-      for (let i = s + 1; i <= n; i++) {
-        temp[L] = i;
-        DFS(L + 1, i);
+  while (queue.length > 0) {
+    let len = queue.length;
+    for (let i = 0; i < len; i++) {
+      let x = queue.shift();
+      for (let nx of [x - 1, x + 1, x + 5]) {
+        if (nx === e) return L + 1;
+        else {
+          if (nx > 0 && nx <= 10000 && !ch[nx]) {
+            queue.push(nx);
+          }
+        }
       }
     }
+    L++;
   }
-
-  DFS(0, 0);
 }
 
-console.log(solution(4, 2));
+console.log(solution(8, 3));

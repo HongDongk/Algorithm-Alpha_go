@@ -1,4 +1,4 @@
-// 끝나는 시간을 기준으로 정렬한다
+// 그리디는 정렬을 첫번째로 한다! (어떤 요소로 정렬할지 정해야한다)
 
 function solution(meeting) {
   let answer = 0;
@@ -6,11 +6,12 @@ function solution(meeting) {
     if (a[1] === b[1]) return a[0] - b[0];
     else return a[1] - b[1];
   });
-  let et = 0; // 회의가 끝나는시간
+
+  let endtime = 0;
   for (let x of meeting) {
-    if (x[0] >= et) {
+    if (x[0] >= endtime) {
       answer++;
-      et = x[1];
+      endtime = x[1];
     }
   }
   return answer;
