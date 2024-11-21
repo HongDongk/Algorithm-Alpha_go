@@ -1,4 +1,4 @@
-// 중복처리는 뒤에서부터 for문
+// 냅색 알고리즘 반대로 활용하기
 
 function solution(m, arr) {
   let dp = new Array(m + 1).fill(0);
