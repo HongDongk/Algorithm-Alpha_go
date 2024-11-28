@@ -2,9 +2,9 @@ function solution(m, coin) {
   let dp = new Array(m + 1).fill(1000);
   dp[0] = 0;
 
-  for (let i = 0; i < coin.length; i++) {
-    for (let j = coin[i]; j <= m; j++) {
-      dp[j] = Math.min(dp[j], dp[j - coin[i]] + 1);
+  for (let c of coin) {
+    for (let i = c; i <= m; i++) {
+      dp[i] = Math.min(dp[i], dp[i - c] + 1);
     }
   }
 
