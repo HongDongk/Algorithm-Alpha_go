@@ -17,7 +17,7 @@ function solution(s, e) {
         }
       }
     }
-    L--;
+    L++;
   }
 }
 
